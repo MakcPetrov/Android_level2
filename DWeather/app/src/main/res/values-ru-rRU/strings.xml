@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DWeather</string>
+    <string name="action_settings">Предпочтения</string>
+    <string name="action_preferences">Настройки</string>
+    <string name="end">Завершение</string>
+    <string name="on_exit">Всем пока!</string>
+    <string name="city">Город</string>
+    <string name="item">item</string>
+</resources>

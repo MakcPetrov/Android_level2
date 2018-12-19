@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name" translatable="false">DWeather</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_preferences">Preferences</string>
+    <string name="end">END</string>
+    <string name="on_exit">Good Bye!</string>
+    <string name="city">Сity</string>
+    <string name="item">item</string>
+</resources>
