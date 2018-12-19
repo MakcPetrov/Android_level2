@@ -7,4 +7,8 @@
     <string name="on_exit">Всем пока!</string>
     <string name="city">Город</string>
     <string name="item">item</string>
+
+    <string name="navigation_drawer_open">Открыть панель навигации</string>
+    <string name="navigation_drawer_close">Закрыть панель навигации</string>
+
 </resources>

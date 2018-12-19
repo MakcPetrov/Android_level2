@@ -6,4 +6,8 @@
     <string name="on_exit">Good Bye!</string>
     <string name="city">Сity</string>
     <string name="item">item</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
 </resources>
