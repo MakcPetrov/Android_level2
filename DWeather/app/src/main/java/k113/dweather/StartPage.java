@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
@@ -49,19 +50,20 @@ public class StartPage extends AppCompatActivity implements NavigationView.OnNav
 //            }
 //        });//SetOnItemClickListener
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
+//
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
 
-    }//onCreate
 
 // скрипач не нужен
+
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -70,6 +72,8 @@ public class StartPage extends AppCompatActivity implements NavigationView.OnNav
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
+    }//onCreate
 
 //    @Override
 //    public void onCreateContextMenu()
@@ -110,9 +114,9 @@ public class StartPage extends AppCompatActivity implements NavigationView.OnNav
                             public void onClick(View view) {
                                 Toast.makeText(StartPage.this,
                                         getResources().getString(R.string.on_exit), Toast.LENGTH_LONG).show();
-                                        //finish();
-                                        //finishAndRemoveTask();
-                                        System.exit(0);
+                                //finish();
+                                //finishAndRemoveTask();
+                                System.exit(0);
                             }
                         }).show();
                 return true;
