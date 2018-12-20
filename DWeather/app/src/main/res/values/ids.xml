@@ -2,4 +2,8 @@
 <resources>
     <item name="drawer_layout" type="id" />
     <item name="nav_view" type="id" />
+    <item name="textView1" type="id" />
+    <item name="textView2" type="id" />
+    <item name="menu_item1" type="id" />
+    <item name="menu_item2" type="id" />
 </resources>

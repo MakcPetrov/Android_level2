@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,10 +22,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class StartPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class StartPage extends AppCompatActivity  {
+//implements NavigationView.OnNavigationItemSelectedListener
+
     Toolbar toolbar;
     String [] cityes = {"Москва", "Питер", "Новосибирск", "Екатеринбург", "Урюпинск", "Гадюкино"};//города TODO: обмен с BackEnd
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -38,9 +41,12 @@ public class StartPage extends AppCompatActivity implements NavigationView.OnNav
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-//        CityAdapter adapter = new CityAdapter (cityes);
-//        recyclerView.setAdapter(adapter);
 
+
+                //пока заскобим
+// CityAdapter adapter = new CityAdapter (cityes);
+//        recyclerView.setAdapter(adapter);
+//
 //        final Activity that = this;
 //        adapter.SetOnItemClickListener(new CityAdapter.OnItemClickListener() {
 //            @Override
@@ -49,6 +55,7 @@ public class StartPage extends AppCompatActivity implements NavigationView.OnNav
 //                    Snackbar.LENGTH_LONG).show();
 //            }
 //        });//SetOnItemClickListener
+
 
 //        DrawerLayout drawer = findViewById(R.id.drawer_layout);
 //        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,10 +67,7 @@ public class StartPage extends AppCompatActivity implements NavigationView.OnNav
 //        navigationView.setNavigationItemSelectedListener(this);
 
 
-
-
 // скрипач не нужен
-
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -73,11 +77,32 @@ public class StartPage extends AppCompatActivity implements NavigationView.OnNav
 //            }
 //        });
 
+        setContentView(R.layout.startpage);
+        TextView textView1 = findViewById(R.id.textView1);
+        registerForContextMenu(textView1);
+
     }//onCreate
 
-//    @Override
-//    public void onCreateContextMenu()
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
 
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item1:
+                Toast.makeText(this, "Выбран Пункт 1", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menu_item2:
+                Toast.makeText(this, "Выбран Пункт 2", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -122,15 +147,7 @@ public class StartPage extends AppCompatActivity implements NavigationView.OnNav
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }//onOptionsItemSelected
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
-    }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
-}
+}//class StartPage
