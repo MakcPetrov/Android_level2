@@ -40,8 +40,11 @@ public class StartPage extends AppCompatActivity  {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        TextView textView1 = findViewById(R.id.textView1);
+        registerForContextMenu(textView1);
 
-                //пока заскобим
+
+        //пока заскобим
 // CityAdapter adapter = new CityAdapter (cityes);
 //        recyclerView.setAdapter(adapter);
 //
@@ -75,9 +78,6 @@ public class StartPage extends AppCompatActivity  {
 //            }
 //        });
 
-        setContentView(R.layout.startpage);
-        TextView textView1 = findViewById(R.id.textView1);
-        registerForContextMenu(textView1);
     }//onCreate
 
     @Override
@@ -92,9 +92,6 @@ public class StartPage extends AppCompatActivity  {
         switch (item.getItemId()) {
             case R.id.menu_item1:
                 Toast.makeText(this, "Выбран Пункт 1", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.menu_item2:
-                Toast.makeText(this, "Выбран Пункт 2", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onContextItemSelected(item);
