@@ -21,7 +21,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 public class StartPage extends AppCompatActivity  {
 //implements NavigationView.OnNavigationItemSelectedListener
 
@@ -40,7 +39,6 @@ public class StartPage extends AppCompatActivity  {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
 
 
                 //пока заскобим
@@ -80,7 +78,6 @@ public class StartPage extends AppCompatActivity  {
         setContentView(R.layout.startpage);
         TextView textView1 = findViewById(R.id.textView1);
         registerForContextMenu(textView1);
-
     }//onCreate
 
     @Override
@@ -88,7 +85,7 @@ public class StartPage extends AppCompatActivity  {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.context_menu, menu);
-    }
+    }//onCreateContextMenu
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
@@ -102,13 +99,14 @@ public class StartPage extends AppCompatActivity  {
             default:
                 return super.onContextItemSelected(item);
         }
-    }
+    }//onContextItemSelected
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_start_page, menu);
         return true;
-    }
+    }//onCreateOptionsMenu
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
