@@ -13,5 +13,6 @@
 
     <string name="navigation_drawer_open">Открыть панель навигации</string>
     <string name="navigation_drawer_close">Закрыть панель навигации</string>
+    <string name="termsensor">датчик температуры</string>
 
 </resources>

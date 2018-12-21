@@ -72,6 +72,7 @@ public class StartPage extends AppCompatActivity  {
                         .setAction(getResources().getString(R.string.con_text), new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                BackEnd.isLog("start secondpage");
                                 startActivity(new Intent(StartPage.this, SecondPage.class));//Окно датчиков
                             }
                         }).show();
@@ -142,9 +143,11 @@ public class StartPage extends AppCompatActivity  {
                             public void onClick(View view) {
                                 Toast.makeText(StartPage.this,
                                         getResources().getString(R.string.on_exit), Toast.LENGTH_LONG).show();
-                                //finish();//TODO: разобраться с выходом из всех активити
-                                finishAndRemoveTask();
-                                //System.exit(0);
+
+                                BackEnd.isLog("end StartPage");
+                                finish();
+                                finishAndRemoveTask();//TODO: разобраться с выходом из всех активити
+                                System.exit(0);
                             }
                         }).show();
                 return true;
