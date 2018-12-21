@@ -90,16 +90,17 @@ public class StartPage extends AppCompatActivity  {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_item1:
-                String s="Выбран Пункт 1";
-                BackEnd.isLog(s);
-                Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+        //        switch (item.getItemId()) {//без вариантов
+//            case R.id.menu_item1:
+//                String s="Выбран Пункт 1";
+//                BackEnd.isLog(s);
+//                Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(StartPage.this, SecondPage.class));//интент всё равно нужен ?
-                return true;
-            default:
-                return super.onContextItemSelected(item);
-        }
+//                return true;
+//            default:
+//                return super.onContextItemSelected(item);
+//        }
+        return true;
     }//onContextItemSelected
 
     @Override
