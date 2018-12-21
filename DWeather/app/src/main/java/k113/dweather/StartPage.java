@@ -26,7 +26,7 @@ public class StartPage extends AppCompatActivity  {
 //implements NavigationView.OnNavigationItemSelectedListener
 
     Toolbar toolbar;
-    String [] cityes = {"Москва", "Питер", "Новосибирск", "Екатеринбург", "Урюпинск", "Гадюкино"};//города TODO: обмен с BackEnd
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -41,11 +41,7 @@ public class StartPage extends AppCompatActivity  {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        TextView textView1 = findViewById(R.id.textView1);
-        registerForContextMenu(textView1);
-
-
-        //пока заскобим
+        //Список городов с выбором
 // CityAdapter adapter = new CityAdapter (cityes);
 //        recyclerView.setAdapter(adapter);
 //
@@ -59,59 +55,66 @@ public class StartPage extends AppCompatActivity  {
 //        });//SetOnItemClickListener
 
 
+//        //Боковое меню
 //        DrawerLayout drawer = findViewById(R.id.drawer_layout);
 //        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
 //                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 //        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
-//
+//        toggle.syncState();//
 //        NavigationView navigationView = findViewById(R.id.nav_view);
 //        navigationView.setNavigationItemSelectedListener(this);
 
+        FloatingActionButton fab = findViewById(R.id.fab);// Большая кнопка
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(toolbar, getResources().getString(R.string.environment), Snackbar.LENGTH_LONG)
+                        .setAction(getResources().getString(R.string.con_text), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                startActivity(new Intent(StartPage.this, SecondPage.class));//Окно датчиков
+                            }
+                        }).show();
+            }//onClick
+        });
 
-// скрипач не нужен
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+
+//        TextView ContextMenu = findViewById(R.id.textContext);
+//        registerForContextMenu(ContextMenu);
 
     }//onCreate
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.context_menu, menu);
-    }//onCreateContextMenu
+// ContextMenu
+//    @Override
+//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+//        super.onCreateContextMenu(menu, v, menuInfo);
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.context_menu, menu);
+//    }//onCreateContextMenu
+//    @Override
+//    public boolean onContextItemSelected(MenuItem item) {
+//        //        switch (item.getItemId()) {//без вариантов
+////            case R.id.menu_item1:
+////                String s="Выбран Пункт 1";
+////                BackEnd.isLog(s);
+////                Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(StartPage.this, SecondPage.class));//интент всё равно нужен ?
+////                return true;
+////            default:
+////                return super.onContextItemSelected(item);
+////        }
+//        return true;
+//    }//onContextItemSelected
 
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        //        switch (item.getItemId()) {//без вариантов
-//            case R.id.menu_item1:
-//                String s="Выбран Пункт 1";
-//                BackEnd.isLog(s);
-//                Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(StartPage.this, SecondPage.class));//интент всё равно нужен ?
-//                return true;
-//            default:
-//                return super.onContextItemSelected(item);
-//        }
-        return true;
-    }//onContextItemSelected
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {//Меню в АппБаре - создать
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_start_page, menu);
         return true;
     }//onCreateOptionsMenu
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {//Меню в АппБаре - реакции
         int id = item.getItemId();
 
         switch (id) {
@@ -141,7 +144,7 @@ public class StartPage extends AppCompatActivity  {
                                         getResources().getString(R.string.on_exit), Toast.LENGTH_LONG).show();
                                 //finish();//TODO: разобраться с выходом из всех активити
                                 finishAndRemoveTask();
-                                System.exit(0);
+                                //System.exit(0);
                             }
                         }).show();
                 return true;

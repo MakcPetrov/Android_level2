@@ -14,16 +14,16 @@ public class SecondPage  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.secondpage);
         String txt = BackEnd.getCity();
-        //String txt = getIntent().getExtras().getString(TEXT); // получить данные из Intent
+
         TextView textView = findViewById(R.id.sensor1);
         textView.setText(txt); // Сохранить их в TextView
+
         Button button = findViewById(R.id.returnbtn);     // Кнопка
         button.setOnClickListener(new View.OnClickListener() {  // Обработка нажатий
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SecondPage.this, StartPage.class);
                 startActivity(intent);//вернуться в предыдущее окно
-                finishAndRemoveTask();//закрыть это окно (да, так работает)
             }
         });
 

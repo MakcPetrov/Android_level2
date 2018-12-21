@@ -7,7 +7,7 @@ public class BackEnd {
     private static boolean debugLog = true;
 
     static void isLog(String send){if (debugLog) Log.i(TAG,send);}
-    private static String this_city="";
+    private static String this_city="Noname";
 
     public static String getCity() {
         return this_city;

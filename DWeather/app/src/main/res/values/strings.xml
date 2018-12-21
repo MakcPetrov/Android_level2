@@ -6,9 +6,9 @@
     <string name="on_exit">Good Bye!</string>
     <string name="city">City</string>
     <string name="item">item</string>
-    <string name="con_text">environment sensors</string>
+    <string name="con_text">sensors</string>
     <string name="to_start">return</string>
-    <string name="envsens">show environment sensors data</string>
+    <string name="environment">show environment?</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
