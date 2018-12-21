@@ -2,6 +2,7 @@ package k113.dweather;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -91,7 +92,10 @@ public class StartPage extends AppCompatActivity  {
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item1:
-                Toast.makeText(this, "Выбран Пункт 1", Toast.LENGTH_SHORT).show();
+                String s="Выбран Пункт 1";
+                BackEnd.isLog(s);
+                Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(StartPage.this, SecondPage.class));//интент всё равно нужен ?
                 return true;
             default:
                 return super.onContextItemSelected(item);
@@ -134,8 +138,8 @@ public class StartPage extends AppCompatActivity  {
                             public void onClick(View view) {
                                 Toast.makeText(StartPage.this,
                                         getResources().getString(R.string.on_exit), Toast.LENGTH_LONG).show();
-                                //finish();
-                                //finishAndRemoveTask();
+                                //finish();//TODO: разобраться с выходом из всех активити
+                                finishAndRemoveTask();
                                 System.exit(0);
                             }
                         }).show();
