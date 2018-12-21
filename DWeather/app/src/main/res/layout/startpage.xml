@@ -24,19 +24,22 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/listCityes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical" />
-
     <TextView
         android:id="@+id/cityID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/city"
-        android:textSize="33sp"
-        />
+        android:textSize="33sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listCityes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:clipChildren="true"
+        android:clipToPadding="true" />
+
 
     <!--Контекстное меню внизу слева -->
     <TextView
