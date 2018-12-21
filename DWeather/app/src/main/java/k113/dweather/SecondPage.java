@@ -16,6 +16,7 @@ public class SecondPage  extends AppCompatActivity {
     TextView cityName,termSensor;
     private Sensor sensor;
     private SensorManager sensorManager;
+    private String str;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +31,15 @@ public class SecondPage  extends AppCompatActivity {
         sensor = sensorManager != null ? sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE) : null;
 
         termSensor = findViewById(R.id.termsensor);//встроенный датчик температуры
-        termSensor.setText("000");
+        str="term "+BackEnd.getLtms();
+        termSensor.setText(str);
 
 
-        Button button = findViewById(R.id.returnbtn);     // Кнопка
+        Button button = findViewById(R.id.returnbtn);     // Кнопка возврата
         button.setOnClickListener(new View.OnClickListener() {  // Обработка нажатий
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SecondPage.this, StartPage.class);
-//                startActivity(intent);//вернуться в предыдущее окно
                 BackEnd.isLog("end secondpage");
                 finish();//закрыть окно и вернуться в породившее
             }
@@ -46,26 +47,34 @@ public class SecondPage  extends AppCompatActivity {
 
     }//onCreate
 
-    // Вывод датчика освещенности
-    private String showLightSensors(SensorEvent event) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Light Sensor value = ").append(event.values[0])
-                .append("\n").append("=======================================").append("\n");
-        return (stringBuilder.toString());
+    // Если приложение свернуто, то не будем тратить энергию на получение информации по датчикам
+    @Override
+    protected void onPause() {
+        super.onPause();
+        BackEnd.isLog("датчик на паузу");
+        sensorManager.unregisterListener(listenerTerm, sensor);
     }
 
-
-    // Слушатель датчика освещенности
-    private final SensorEventListener listenerLight = new SensorEventListener() {
+    // Слушатель датчика температуры
+    private final SensorEventListener listenerTerm = new SensorEventListener() {
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        }
+        }//onAccuracyChanged
 
         @Override
         public void onSensorChanged(SensorEvent event) {
-            showLightSensors(event);
-        }
-    };
+            BackEnd.setLtms(showTermSensor(event));
+        }//onSensorChanged
+    };//SensorEventListener
+
+    // Вывод датчика освещенности
+    private float showTermSensor(SensorEvent event) {
+        BackEnd.isLog("term="+event.values[0]);
+        str="term "+BackEnd.getLtms();
+        termSensor.setText(str);
+        return event.values[0];
+    }//showTermSensor
+
 
 
 }

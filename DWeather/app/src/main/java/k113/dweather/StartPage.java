@@ -32,6 +32,7 @@ public class StartPage extends AppCompatActivity  {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startpage);
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -72,16 +73,20 @@ public class StartPage extends AppCompatActivity  {
                         .setAction(getResources().getString(R.string.con_text), new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                BackEnd.isLog("start secondpage");
+                           //     BackEnd.isLog("start secondpage");
                                 startActivity(new Intent(StartPage.this, SecondPage.class));//Окно датчиков
                             }
                         }).show();
             }//onClick
         });
 
+        TextView cityName = findViewById(R.id.cityID);
+        BackEnd.isLog(cityName.getText().toString());
+        cityName.setText(BackEnd.getCity());
+        BackEnd.isLog(cityName.getText().toString());
 
-//        TextView ContextMenu = findViewById(R.id.textContext);
-//        registerForContextMenu(ContextMenu);
+        TextView ContextMenu = findViewById(R.id.textContext);
+        registerForContextMenu(ContextMenu);
 
     }//onCreate
 
@@ -143,8 +148,7 @@ public class StartPage extends AppCompatActivity  {
                             public void onClick(View view) {
                                 Toast.makeText(StartPage.this,
                                         getResources().getString(R.string.on_exit), Toast.LENGTH_LONG).show();
-
-                                BackEnd.isLog("end StartPage");
+                             //   BackEnd.isLog("end StartPage");
                                 finish();
                                 finishAndRemoveTask();//TODO: разобраться с выходом из всех активити
                                 System.exit(0);
@@ -154,6 +158,5 @@ public class StartPage extends AppCompatActivity  {
         }
         return super.onOptionsItemSelected(item);
     }//onOptionsItemSelected
-
 
 }//class StartPage
