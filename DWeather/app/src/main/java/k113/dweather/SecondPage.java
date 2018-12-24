@@ -24,7 +24,7 @@ public class SecondPage  extends AppCompatActivity {
         setContentView(R.layout.secondpage);
 
         cityName = findViewById(R.id.cityID);
-        cityName.setText(BackEnd.getCity()); // Сохранить их в TextView
+        cityName.setText(BackEnd.getCity());//Взять имя из бэкэнда
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
@@ -63,11 +63,13 @@ public class SecondPage  extends AppCompatActivity {
 
         @Override
         public void onSensorChanged(SensorEvent event) {
+            str="term "+BackEnd.getLtms();
+            termSensor.setText(str);
             BackEnd.setLtms(showTermSensor(event));
         }//onSensorChanged
     };//SensorEventListener
 
-    // Вывод датчика освещенности
+    // Вывод датчика
     private float showTermSensor(SensorEvent event) {
         BackEnd.isLog("term="+event.values[0]);
         str="term "+BackEnd.getLtms();

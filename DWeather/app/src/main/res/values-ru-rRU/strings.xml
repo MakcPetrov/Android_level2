@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">DWeather</string>
     <string name="action_settings">Предпочтения</string>
-    <string name="action_preferences">Настройки</string>
+    <string name="action_preferences">Температура</string>
     <string name="end">Завершение</string>
     <string name="on_exit">Всем пока!</string>
     <string name="city">Город</string>
@@ -10,6 +10,8 @@
     <string name="con_text">датчики</string>
     <string name="to_start">вернуться</string>
     <string name="environment">показать датчики?</string>
+    <string name="ch_city">изменить город?</string>
+
 
     <string name="navigation_drawer_open">Открыть панель навигации</string>
     <string name="navigation_drawer_close">Закрыть панель навигации</string>

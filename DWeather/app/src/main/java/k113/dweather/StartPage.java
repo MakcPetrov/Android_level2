@@ -26,6 +26,7 @@ public class StartPage extends AppCompatActivity  {
 //implements NavigationView.OnNavigationItemSelectedListener
 
     Toolbar toolbar;
+    TextView cityName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +37,10 @@ public class StartPage extends AppCompatActivity  {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        RecyclerView recyclerView = findViewById(R.id.listCityes);
-        recyclerView.setHasFixedSize(true);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+//        RecyclerView recyclerView = findViewById(R.id.listCityes);
+//        recyclerView.setHasFixedSize(true);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(layoutManager);
 
         //Список городов с выбором
 // CityAdapter adapter = new CityAdapter (cityes);
@@ -65,6 +65,12 @@ public class StartPage extends AppCompatActivity  {
 //        NavigationView navigationView = findViewById(R.id.nav_view);
 //        navigationView.setNavigationItemSelectedListener(this);
 
+
+        cityName = findViewById(R.id.cityID);
+        cityName.setText(BackEnd.getCity());
+        BackEnd.isLog(cityName.getText().toString());
+        registerForContextMenu(cityName);
+
         FloatingActionButton fab = findViewById(R.id.fab);// Большая кнопка
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,44 +79,28 @@ public class StartPage extends AppCompatActivity  {
                         .setAction(getResources().getString(R.string.con_text), new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                           //     BackEnd.isLog("start secondpage");
+                                //     BackEnd.isLog("start secondpage");
                                 startActivity(new Intent(StartPage.this, SecondPage.class));//Окно датчиков
                             }
                         }).show();
             }//onClick
-        });
-
-        TextView cityName = findViewById(R.id.cityID);
-        BackEnd.isLog(cityName.getText().toString());
-        cityName.setText(BackEnd.getCity());
-        BackEnd.isLog(cityName.getText().toString());
-
-        TextView ContextMenu = findViewById(R.id.textContext);
-        registerForContextMenu(ContextMenu);
+        });//fab
 
     }//onCreate
 
 // ContextMenu
-//    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        super.onCreateContextMenu(menu, v, menuInfo);
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.context_menu, menu);
-//    }//onCreateContextMenu
-//    @Override
-//    public boolean onContextItemSelected(MenuItem item) {
-//        //        switch (item.getItemId()) {//без вариантов
-////            case R.id.menu_item1:
-////                String s="Выбран Пункт 1";
-////                BackEnd.isLog(s);
-////                Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(StartPage.this, SecondPage.class));//интент всё равно нужен ?
-////                return true;
-////            default:
-////                return super.onContextItemSelected(item);
-////        }
-//        return true;
-//    }//onContextItemSelected
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }//onCreateContextMenu
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        BackEnd.setCity("Другой город");
+        cityName.setText(BackEnd.getCity());//перерисовать поле
+        return true;
+    }//onContextItemSelected
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {//Меню в АппБаре - создать
@@ -140,6 +130,7 @@ public class StartPage extends AppCompatActivity  {
             case R.id.action_preferences:
                 Snackbar.make(toolbar, getResources().getString(R.string.action_preferences),
                         Snackbar.LENGTH_LONG).show();
+                    BackEnd.setLtms(113);
                 return true;
             case R.id.end:
                 Snackbar.make(toolbar, getResources().getString(R.string.end), Snackbar.LENGTH_LONG)
@@ -149,9 +140,8 @@ public class StartPage extends AppCompatActivity  {
                                 Toast.makeText(StartPage.this,
                                         getResources().getString(R.string.on_exit), Toast.LENGTH_LONG).show();
                              //   BackEnd.isLog("end StartPage");
-                                finish();
-                                finishAndRemoveTask();//TODO: разобраться с выходом из всех активити
-                                System.exit(0);
+                                finishAndRemoveTask();
+//                                System.exit(0);
                             }
                         }).show();
                 return true;

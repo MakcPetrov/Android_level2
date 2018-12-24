@@ -11,18 +11,18 @@ public class BackEnd {
     static void isLog(String send){if (debugLog) Log.i(TAG,send);}
     private static String this_city="Noname";
 
-    public static String getCity() {
+    static String getCity() {
         return this_city;
     }
 
-    public static void setCity(String city) {
+    static void setCity(String city) {
         BackEnd.this_city = city;
     }
 
-    public static float getLtms() {
+    static float getLtms() {
         return ltms;     }
 
-    public static void setLtms(float ltms) {
+    static void setLtms(float ltms) {
         isLog("new term sens= "+ltms);
         BackEnd.ltms = ltms;    }
 
