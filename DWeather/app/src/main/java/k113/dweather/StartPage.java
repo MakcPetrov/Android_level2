@@ -2,17 +2,17 @@ package k113.dweather;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -95,8 +95,6 @@ public class StartPage extends AppCompatActivity  {
             }
         });
 
-
-
     }//onCreate
 
 // ContextMenu
@@ -135,7 +133,6 @@ public class StartPage extends AppCompatActivity  {
                                         "OK", Toast.LENGTH_LONG).show();
                             }
                         }).show();
-
                 return true;
             }
             case R.id.action_preferences:
@@ -159,5 +156,4 @@ public class StartPage extends AppCompatActivity  {
         }
         return super.onOptionsItemSelected(item);
     }//onOptionsItemSelected
-
 }//class StartPage
