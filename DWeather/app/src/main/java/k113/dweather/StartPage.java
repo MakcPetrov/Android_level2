@@ -19,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -85,6 +86,16 @@ public class StartPage extends AppCompatActivity  {
                         }).show();
             }//onClick
         });//fab
+
+        Button buttonStartService = findViewById(R.id.buttonStartService);
+        buttonStartService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startService(new Intent(StartPage.this, ReqSrv.class));
+            }
+        });
+
+
 
     }//onCreate
 

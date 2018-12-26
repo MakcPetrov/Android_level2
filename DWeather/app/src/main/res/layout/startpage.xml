@@ -26,6 +26,14 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <Button
+        android:id="@+id/buttonStartService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        />
+
     <TextView
         android:id="@+id/cityID"
         android:layout_width="wrap_content"
@@ -61,7 +69,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_info" />
-
 
 
 </android.support.design.widget.CoordinatorLayout>
