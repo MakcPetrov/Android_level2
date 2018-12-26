@@ -26,6 +26,6 @@ public class BackEnd {
         isLog("new term sens= "+ltms);
         BackEnd.ltms = ltms;    }
 
-}
+}//BackEnd
 
 
