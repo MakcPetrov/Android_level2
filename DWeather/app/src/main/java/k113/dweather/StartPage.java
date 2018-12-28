@@ -2,6 +2,7 @@ package k113.dweather;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -28,6 +29,7 @@ public class StartPage extends AppCompatActivity  {
 
     Toolbar toolbar;
     TextView cityName;
+    String[] prefKeys = {"cityName","localTemp","debug"};//сохраняемые настройки
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +99,27 @@ public class StartPage extends AppCompatActivity  {
 
     }//onCreate
 
+    // сохраняем настройки
+    private void savePreferences(SharedPreferences sharedPref){
+        // для сохранения настроек надо воспользоваться классом Editor
+        SharedPreferences.Editor editor = sharedPref.edit();
+        // теперь в Editor установим значения
+        editor.putString(prefKeys[0], BackEnd.getCity());
+        editor.putFloat(prefKeys[1],BackEnd.getLtms());
+        editor.putBoolean(prefKeys[2],BackEnd.isDebug());
+        BackEnd.isLog("пишем настройки");
+        // и сохраним файл настроек
+        editor.apply();
+    }//savePreferences
+
+    private void loadPreferences(SharedPreferences sharedPref){
+        // для получения настроек нет необходимости в Editor, получаем их прямо из SharedPreferences
+        BackEnd.isLog("читаем настройки");
+        BackEnd.setCity(sharedPref.getString(prefKeys[0], "Noname"));
+        BackEnd.setLtms(sharedPref.getFloat(prefKeys[1], -273));
+        BackEnd.debugLog(sharedPref.getBoolean(prefKeys[2], false));
+    }//loadPreferences
+
 // ContextMenu
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -110,49 +133,64 @@ public class StartPage extends AppCompatActivity  {
         cityName.setText(BackEnd.getCity());//перерисовать поле
         return true;
     }//onContextItemSelected
-
+// AppBarMenu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {//Меню в АппБаре - создать
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_start_page, menu);
         return true;
     }//onCreateOptionsMenu
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {//Меню в АппБаре - реакции
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_settings:
-            {
-                Snackbar.make(toolbar, getResources().getString(R.string.action_settings), Snackbar.LENGTH_LONG)
+            case R.id.action_savesettings: {
+                Snackbar.make(toolbar, getResources().getString(R.string.action_savesettings), Snackbar.LENGTH_LONG)
                         .setAction("OK", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Toast.makeText(StartPage.this,
-                                        "OK", Toast.LENGTH_LONG).show();
+                                SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
+                                BackEnd.isLog("save");
+                                savePreferences(sharedPref);    // сохранить настройки
                             }
                         }).show();
                 return true;
-            }
-            case R.id.action_preferences:
-                Snackbar.make(toolbar, getResources().getString(R.string.action_preferences),
-                        Snackbar.LENGTH_LONG).show();
-                    BackEnd.setLtms(113);
+            }//action_savesettings
+
+            case R.id.action_loadsettings: {
+                Snackbar.make(toolbar, getResources().getString(R.string.action_loadsettings), Snackbar.LENGTH_LONG)
+                        .setAction("OK", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
+                                BackEnd.isLog("load");
+                                loadPreferences(sharedPref);    // загрузить настройки
+                            }
+                        }).show();
                 return true;
-            case R.id.end:
+            }//action_loadsettings
+
+            case R.id.action_preferences:
+            {Snackbar.make(toolbar, getResources().getString(R.string.action_preferences),
+                    Snackbar.LENGTH_LONG).show();
+                BackEnd.setLtms(113);
+                return true;
+            }//action_preferences
+            case R.id.exit: {
                 Snackbar.make(toolbar, getResources().getString(R.string.end), Snackbar.LENGTH_LONG)
                         .setAction("EXIT?", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 Toast.makeText(StartPage.this,
                                         getResources().getString(R.string.on_exit), Toast.LENGTH_LONG).show();
-                             //   BackEnd.isLog("end StartPage");
+                                //   BackEnd.isLog("end StartPage");
                                 finishAndRemoveTask();
 //                                System.exit(0);
                             }
                         }).show();
                 return true;
+            }//exit
         }
         return super.onOptionsItemSelected(item);
     }//onOptionsItemSelected

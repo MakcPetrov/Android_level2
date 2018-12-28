@@ -2,29 +2,32 @@ package k113.dweather;
 
 import android.util.Log;
 
-public class BackEnd {
+class BackEnd {//вся логика программы, данные и обработка их - здесь, в бэкэнде
     private static final String TAG = "fLC";
     private static boolean debugLog = true;
-
-    private static float ltms=-273;
+    private static float localTerm=-273;
 
     static void isLog(String send){if (debugLog) Log.i(TAG,send);}
-    private static String this_city="Noname";
 
+    private static String this_city="          MyCity";
     static String getCity() {
         return this_city;
     }
-
     static void setCity(String city) {
         BackEnd.this_city = city;
     }
+    static float getLtms() { return localTerm; }
 
-    static float getLtms() {
-        return ltms;     }
+    static boolean isDebug() { return debugLog; }
 
-    static void setLtms(float ltms) {
+    static void debugLog(boolean debug) {
+        BackEnd.debugLog = debug;
+        Log.i(TAG,"Debug is "+((debug) ? "on":"off"));
+    }
+
+    static void setLtms(float ltms) {//тупо меняем температуру ручками, потому что датчиков в эмуляторе нет
         isLog("new term sens= "+ltms);
-        BackEnd.ltms = ltms;    }
+        BackEnd.localTerm = ltms;    }
 
 }//BackEnd
 

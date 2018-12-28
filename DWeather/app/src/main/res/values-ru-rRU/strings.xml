@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DWeather</string>
-    <string name="action_settings">Предпочтения</string>
+    <string name="action_savesettings">Сохранить настройки</string>
+    <string name="action_loadsettings">Загрузить настройки</string>
     <string name="action_preferences">Температура</string>
     <string name="end">Завершение</string>
     <string name="on_exit">Всем пока!</string>
