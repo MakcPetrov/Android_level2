@@ -1,4 +1,4 @@
-package ru.k113.rxhw;
+package ru.k113.rxhw.task1;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -11,7 +11,7 @@ class MyAsyncTask extends AsyncTask<Void, Void, Void> {
         try {
             for (int i = 0; i < 5; i++) {
                 TimeUnit.SECONDS.sleep(1);
-                Log.d(Const.TAG, Thread.currentThread().getName() + ": " + i);
+                Log.d(Const.TAG, "Running : " + i + " " + Thread.currentThread().getName());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
