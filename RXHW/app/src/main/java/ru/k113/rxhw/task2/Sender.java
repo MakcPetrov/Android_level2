@@ -40,6 +40,7 @@ public class Sender implements SendList {
             MyObserver observer = arrayList.get(i);
             observer.updateData(name, num);
 
+            //TODO: почему-то делает только две рассылки, если количество больше 1
         }
     }//sendAllObserver
 }
