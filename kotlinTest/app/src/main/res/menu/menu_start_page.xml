@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="k113.dweather.StartPage">
+    <item
+        android:id="@+id/action_savesettings"
+        android:orderInCategory="100"
+        android:title="@string/action_savesettings"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_loadsettings"
+        android:orderInCategory="100"
+        android:title="@string/action_loadsettings"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_preferences"
+        android:orderInCategory="100"
+        android:title="@string/action_preferences"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/exit"
+        android:orderInCategory="100"
+        android:title="@string/end"
+        app:showAsAction="ifRoom" />
+
+</menu>
