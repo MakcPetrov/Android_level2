@@ -5,15 +5,12 @@
     <string name="action_preferences">Term</string>
     <string name="end" translatable="false">EXIT</string>
     <string name="on_exit">Good Bye!</string>
-    <string name="city">City</string>
     <string name="item">item</string>
     <string name="con_text">sensors</string>
     <string name="to_start">return</string>
     <string name="environment">show sensor?</string>
     <string name="ch_city">change city?</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="termsensor">termo sensor</string>
     <string name="start">request</string>
 
